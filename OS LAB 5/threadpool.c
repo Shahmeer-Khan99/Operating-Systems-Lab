@@ -1,8 +1,3 @@
-/**
- * Implementation of thread pool.
- * 2016003736 이민수 
- * 소프트웨어학부 컴퓨터전공 3학년
- */
 
 #include <pthread.h>
 #include <stdlib.h>
