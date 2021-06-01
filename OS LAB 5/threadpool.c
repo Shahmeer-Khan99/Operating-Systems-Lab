@@ -62,6 +62,11 @@ task dequeue()
     return worktodo;
 }
 
+void execute(void (*somefunction)(void *p), void *p)
+{
+    (*somefunction)(p);
+}
+
 // the worker thread in the thread pool
 void *worker(void *param)
 {
@@ -76,6 +81,8 @@ void *worker(void *param)
     sem_post(&semqueue);
     pthread_exit(0);
 }
+
+
 
 /**
  * Submits work to the pool.
@@ -101,6 +108,9 @@ int pool_submit(void (*somefunction)(void *p), void *p)
 // initialize the thread pool
 void pool_init(void)
 {
+    pthread_create(&bee1,NULL,worker,NULL);
+    pthread_create(&bee2,NULL,worker,NULL);
+    pthread_create(&bee3,NULL,worker,NULL);
     sem_init(&semqueue,0,1);
 }
 
